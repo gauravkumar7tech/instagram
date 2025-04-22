@@ -44,6 +44,19 @@ CREATE TABLE Likes (
     FOREIGN KEY (post_id) REFERENCES Posts(post_id),
     UNIQUE (user_id, post_id) -- prevent multiple likes on the same post
 );
+INSERT INTO Likes (user_id, post_id)
+VALUES
+(1, 2),
+(2, 1),
+(3, 1),
+(4, 3),
+(1, 3),
+(2, 4),
+(3, 5),
+(4, 6),
+(1, 5),
+(2, 3);
+
 CREATE TABLE Followers (
     follower_id INT NOT NULL,
     following_id INT NOT NULL,
