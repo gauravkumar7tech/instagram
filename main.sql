@@ -9,7 +9,7 @@ CREATE TABLE Users (
     password varchar(255) not null,
     created_at timestamp default current_timestamp
 );
-
+-- Users table give the data by user input
 INSERT INTO Users (username, email, bio, password) VALUES
 ('alice', 'alice@example.com', 'Nature lover 🌿 | Coffee addict ☕', 'password123'),
 ('bob', 'bob@example.com', 'Tech geek 🤖 | Gamer 🎮', 'bobsecure456'),
@@ -27,6 +27,7 @@ CREATE TABLE Posts (
     posted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES Users(user_id)
 );
+-- Postes table give the data by user input
 INSERT INTO Posts (user_id, image_url, caption)
 VALUES 
 (1, 'https://example.com/images/post1.jpg', 'Sunset at the beach 🌅'),
@@ -47,6 +48,7 @@ CREATE TABLE Likes (
     FOREIGN KEY (post_id) REFERENCES Posts(post_id),
     UNIQUE (user_id, post_id) -- prevent multiple likes on the same post
 );
+-- Likes table give the data by user input
 INSERT INTO Likes (user_id, post_id)
 VALUES
 (1, 2),
@@ -69,7 +71,7 @@ CREATE TABLE Followers (
     FOREIGN KEY (follower_id) REFERENCES Users(user_id),
     FOREIGN KEY (following_id) REFERENCES Users(user_id)
 );
-
+-- Followers table give the data by user input
 INSERT INTO Followers (follower_id, following_id) VALUES
 (2, 1),
 (3, 1),
@@ -87,6 +89,7 @@ CREATE TABLE Comments (
     FOREIGN KEY (post_id) REFERENCES Posts(post_id),
     FOREIGN KEY (user_id) REFERENCES Users(user_id)
 );
+-- Comments table give the data by user input
 INSERT INTO Comments (post_id, user_id, comment) VALUES
 (1, 2, 'Beautiful view!'),
 (1, 3, 'Stunning photo!'),
